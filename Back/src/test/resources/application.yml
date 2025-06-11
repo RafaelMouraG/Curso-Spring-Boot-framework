@@ -1,1 +1,6 @@
-spring.application.name=rest-with-spring-boot-and-java-erudio
+spring:
+  application:
+    name: rest-with-spring-boot-and-java-erudio
+  output:
+    ansi:
+      enabled: ALWAYS
