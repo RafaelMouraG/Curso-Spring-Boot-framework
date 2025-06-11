@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Startup<rest-with-spring-boot-and-java-erudio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Startup",
+            "projectName": "rest-with-spring-boot-and-java-erudio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
