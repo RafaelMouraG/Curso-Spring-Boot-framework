@@ -31,6 +31,7 @@ public class PersonService {// aqui que se procura no banco de dados
     }
 
     public List<Person> findAll(){
+        logger.info("Finding all people!");
         List<Person> people= new ArrayList<Person>();
         for (int i = 0; i < 8; i++) {
             Person person = mockPerson(i);
@@ -38,6 +39,21 @@ public class PersonService {// aqui que se procura no banco de dados
         }
 
         return people;
+    }
+
+    public Person create(Person person){
+        logger.info("Creating one Person!");
+        //If we had a db we would access it here
+        return person;
+    }
+
+    public Person update(Person person){
+        logger.info("Updating one person!");
+        return person;
+    }
+
+    public void delete(String id){
+        logger.info("Deleting one person");
     }
 
     private Person mockPerson(int i) {
