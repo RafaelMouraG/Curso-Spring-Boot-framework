@@ -2,8 +2,9 @@ package com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Service;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class PersonService {// aqui que se procura no banco de dados
     @Autowired
     PersonRepository repository;
 
-    private Logger logger = Logger.getLogger(PersonService.class.getName());
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
 
 
     public Person findById(Long id) {
