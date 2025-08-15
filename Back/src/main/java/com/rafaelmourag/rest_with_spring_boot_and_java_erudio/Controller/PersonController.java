@@ -8,7 +8,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Model.Person;
+
+import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.DTO.PersonDTO;
+
 import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Service.PersonService;
 
 
@@ -23,14 +25,14 @@ public class PersonController {
     @GetMapping(
     produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Person> findAll(){
+    public List<PersonDTO> findAll(){
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}",
     produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById(@PathVariable("id") Long id){
+    public PersonDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
 
@@ -38,7 +40,7 @@ public class PersonController {
     produces = MediaType.APPLICATION_JSON_VALUE,
     consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person create(@RequestBody Person person){
+    public PersonDTO create(@RequestBody PersonDTO person){
         return service.create(person);
     }
 
@@ -46,7 +48,7 @@ public class PersonController {
     produces = MediaType.APPLICATION_JSON_VALUE,
     consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person update(@RequestBody Person person){
+    public PersonDTO update(@RequestBody PersonDTO person){
         return service.update(person);
     }
 
