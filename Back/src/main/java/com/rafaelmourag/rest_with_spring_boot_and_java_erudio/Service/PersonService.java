@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 
 
 import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.DTO.PersonDTO;
+import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.DTOv2.PersonDTOV2;
 import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Exception.ResourceNotFoundException;
 import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Model.Person;
 import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.Repository.PersonRepository;
 import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.mapper.ObjectMapper;
+import com.rafaelmourag.rest_with_spring_boot_and_java_erudio.mapper.custom.PersonMapper;
 
 @Service
 public class PersonService {// aqui que se procura no banco de dados
@@ -21,11 +23,13 @@ public class PersonService {// aqui que se procura no banco de dados
     
     @SuppressWarnings("unused")
     private final AtomicLong counter = new AtomicLong();
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
 
     @Autowired
     PersonRepository repository;
-
-    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
+    @Autowired
+    PersonMapper converter;
+    
 
 
     public PersonDTO findById(Long id) {
@@ -46,6 +50,14 @@ public class PersonService {// aqui que se procura no banco de dados
 
         var entity = ObjectMapper.parseObject(person, Person.class);
         return ObjectMapper.parseObject(repository.save(entity), PersonDTO.class);
+    }
+
+    public PersonDTOV2 createV2(PersonDTOV2 person){
+        logger.info("Creating one Person V2!");
+
+        var entity = converter.convertDTOToEntity(person);
+
+        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public PersonDTO update(PersonDTO person){
