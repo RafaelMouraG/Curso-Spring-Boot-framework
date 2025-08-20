@@ -55,7 +55,7 @@ public class PersonService {// aqui que se procura no banco de dados
     public PersonDTOV2 createV2(PersonDTOV2 person){
         logger.info("Creating one Person V2!");
 
-        var entity = converter.convertDTOToEntity(person);
+        var entity = converter.convertDTOtoEntity(person);
 
         return converter.convertEntityToDTO(repository.save(entity));
     }
