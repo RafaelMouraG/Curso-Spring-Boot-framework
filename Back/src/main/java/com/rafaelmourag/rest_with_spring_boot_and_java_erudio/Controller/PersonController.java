@@ -4,6 +4,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,10 @@ public class PersonController {
     produces = MediaType.APPLICATION_JSON_VALUE
     )
     public PersonDTO findById(@PathVariable("id") Long id){
-        return service.findById(id);
+        var person =  service.findById(id);
+        person.setBirthDay(new Date());
+        person.setPhoneNumber("+55 (34) 98283289389");
+        return person;
     }
 
     @PostMapping(
